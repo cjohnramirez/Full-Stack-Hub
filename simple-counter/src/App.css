@@ -1,0 +1,65 @@
+:root {
+  --light-black: #111111;
+  --white: #ffffff;
+}
+
+* {
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  color: var(--white);
+  background: linear-gradient(66deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,37,12,1) 100%);
+}
+
+p {
+  margin: 0;
+}
+
+.title {
+  font-size: 800;
+}
+
+#root {
+  border: 1px solid white;
+  border-radius: 5rem;
+  padding: 1rem;
+  margin: auto;
+  max-width: 700px;
+  min-width: 500px;
+  background: linear-gradient(66deg, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 70%, rgba(0,37,12,5) 100%);
+}
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  justify-content: space-around;
+}
+
+.buttons button {
+  background-color: black;
+  border: none;
+  color: var(--white);
+  width: 2rem;
+  border: 1px solid var(--white);
+  margin: auto 0.25rem;
+  height: 50%;
+  border-radius: 0.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* center counter later */
