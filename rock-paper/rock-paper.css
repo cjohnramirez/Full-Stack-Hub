@@ -1,0 +1,42 @@
+* {
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  background-color: #171717;
+  margin: 2rem;
+}
+
+p {
+  color: white;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.choices {
+  background-color: #171717;
+  border: 2px solid white;
+  border-radius: 100%;
+  padding: 3rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.results-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 600px;
+}
+
+.special-buttons button {
+  background-color: #171717;
+  border: 2px solid #ffffff;
+  padding: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: white;
+  border-radius: 2rem;
+}
