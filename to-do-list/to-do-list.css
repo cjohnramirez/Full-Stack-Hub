@@ -15,7 +15,7 @@ input, button {
   cursor: pointer;
 }
 
-#add-button {
+.add-button {
   background-color: #18ff5d;
 }
 
@@ -34,7 +34,7 @@ p:not(#title) {
   margin: 0;
 }
 
-#delete-button {
+.delete-button {
   background-color: #ff2828;
   color: white;
 }

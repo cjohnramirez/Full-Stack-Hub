@@ -11,8 +11,14 @@ let tieCount = 0;
 })
 
 document.body.addEventListener('keydown', (event) => {
-  console.log('keydown');
-})
+  if (event.key === 'r'){
+    evaluateMoves('rock');
+  } else if (event.key === 'p'){
+    evaluateMoves('paper');
+  } else if (event.key === 's'){
+    evaluateMoves('scissors');
+  }
+}) 
 
 function computerMove() {
   const randomNum = Math.floor(Math.random() * 3);
