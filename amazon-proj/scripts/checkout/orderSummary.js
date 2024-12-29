@@ -2,15 +2,13 @@ import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
 import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOption.js';
+import { renderPaymentSummary } from './paymentSummary.js';
 //named export
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 //default export
 
 export function renderOrderSummary() {
   let cartSummaryHTML = '';
-
-  const today = dayjs();
-  const deliveryDate = today.add(7, 'days');
   
   cart.forEach((cartItem, index) => {
     const productId = cartItem.productId;
@@ -118,6 +116,8 @@ export function renderOrderSummary() {
         );
         
         container.remove();
+
+        renderPaymentSummary();
       });
     });
   
@@ -127,6 +127,7 @@ export function renderOrderSummary() {
       const {productId, deliveryOptionId} = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummary();
+      renderPaymentSummary();
     });
   }));  
 }
