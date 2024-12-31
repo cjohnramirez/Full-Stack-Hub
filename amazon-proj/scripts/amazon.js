@@ -1,10 +1,8 @@
 import {cart, addToCart} from '../data/cart.js';
-import {products} from '../data/products.js';
-import {formatCurrency} from './utils/money.js';
-
+import { products } from '../data/products.js';
 let productsHTML = '';
 
-products.forEach((product, index) => {
+products.forEach((product) => {
   productsHTML += `
     <div class="product-container">
       <div class="product-image-container">
@@ -18,7 +16,7 @@ products.forEach((product, index) => {
 
       <div class="product-rating-container">
         <img class="product-rating-stars"
-          src="${product.getStartsUrl()}">
+          src="${product.getStarsUrl()}">
         <div class="product-rating-count link-primary">
           ${product.rating.count}
         </div>
@@ -43,6 +41,8 @@ products.forEach((product, index) => {
         </select>
       </div>
 
+      ${product.extraInfoHTML()}
+
       <div class="product-spacer"></div>
 
       <div class="added-to-cart">
@@ -54,7 +54,7 @@ products.forEach((product, index) => {
         Add to Cart
       </button>
     </div>
-  `
+  `;
 });
 
 document.querySelector('.products-grid').innerHTML = productsHTML;
