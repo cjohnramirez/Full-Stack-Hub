@@ -2,18 +2,14 @@ import { renderOrderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import { loadProductsFetch } from "../data/products.js";
 import { loadCart } from '../data/cart.js';
-// import '../data/backend-practice.js';
-// import '../data/cart-class.js';
 
 async function loadPage() {
   try {
-    // throw 'error1';
-
     await loadProductsFetch();
 
-    const value = await new Promise((resolve) => {
+    await new Promise((resolve) => {
       loadCart(() => {
-        resolve('value3');
+        resolve();
       });
     });
   } catch (error) {
