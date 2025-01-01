@@ -81,23 +81,30 @@ class Clothing extends Product {
 
 export let products = [];
 
-export function loadProducts(fun) {
-  const xhr = new XMLHttpRequest();
+export function loadProductsFetch() {
+  //equivalent to the open method of XMLHttpRequest class with a 'GET' attribute in the first parameter
 
-  xhr.addEventListener('load', () => {
-    products = JSON.parse(xhr.response).map((productDetails) => {
-        if (productDetails.type === 'clothing') {
-          return new Clothing(productDetails);
-        }
-        return new Product(productDetails);
-      });
+  //fetch is also a child class of Parent
+  const promise = fetch(
+    'https://supersimplebackend.dev/products'
+  ).then((response) => {
+    return response.json();
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });
 
-    fun();
+    console.log('load products');
   });
 
-  xhr.open('GET', 'https://supersimplebackend.dev/products');
-  xhr.send();
+  return promise;
 }
+// loadProductsFetch().then(() => {
+//   console.log('next step');
+// });
 
 // export const products = [
 //   {

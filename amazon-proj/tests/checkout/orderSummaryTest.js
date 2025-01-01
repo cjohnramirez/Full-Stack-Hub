@@ -1,6 +1,6 @@
 import { renderOrderSummary } from "../../scripts/checkout/orderSummary.js";
 import { loadFromStorage, cart} from "../../data/cart.js";
-import { loadProducts  } from "../../data/products.js";
+import { loadProductsFetch  } from "../../data/products.js";
 
 describe('test suite: renderOrderSummary', () => {
   const productId1 = 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
@@ -8,11 +8,11 @@ describe('test suite: renderOrderSummary', () => {
 
   //waits for the function loadProducts() to finish the code, which in return waits for the backend to respond and the function to fetch/receive the JSON file that contains the product
   beforeAll((done) => {
-    loadProducts(() => {
+    loadProductsFetch().then(() => {
       done();
     });
-  })
-
+  });
+  
   beforeEach(() => {
     spyOn(localStorage, 'setItem');
 
