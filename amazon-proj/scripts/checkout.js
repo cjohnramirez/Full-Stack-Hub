@@ -5,10 +5,23 @@ import { loadCart } from '../data/cart.js';
 // import '../data/backend-practice.js';
 // import '../data/cart-class.js';
 
-//New Promise layout, using Promise.all()
+async function loadPage() {
+  await loadProductsFetch();
+
+  await new Promise((resolve) => {
+    loadCart(() => {
+      resolve();
+    });
+  });
+
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+loadPage();
+
+/*
 Promise.all([
-  // the Promise class in JS resolves the issue of deep nesting in traditional callbacks
-  loadProductsFetch(),
+  loadProductsFetch(), 
   new Promise((resolve) => {
     loadCart(() => {
       resolve();
@@ -20,7 +33,6 @@ Promise.all([
   renderPaymentSummary();
 });
 
-//Old Promise layout
 /*
 new Promise((resolve) => {
   loadProducts(() => {
