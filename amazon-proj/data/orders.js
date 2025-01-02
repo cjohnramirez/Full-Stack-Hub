@@ -1,5 +1,4 @@
 import { formatCurrency } from "../scripts/utils/money.js";
-import { products } from "./products.js";
 
 const fetchOrders = JSON.parse(localStorage.getItem('orders')) || [];
 
@@ -19,6 +18,10 @@ class Orders {
   getPrice() {
     return `$${formatCurrency(this.totalCostCents)}`
   }
+
+  getOrderProduct(findProductId) {
+    return this.products.find(products => findProductId === products.productId);
+  }
 }
 
 export const orders = fetchOrders.map((orderDetails) => {
@@ -37,8 +40,17 @@ function saveToStorage() {
 
 export function getOrderUrl(productId, orderId) {
   const url = new URL(window.location.href);
-
   const newURL = `${url.origin}/tracking.html?productId=${productId}&orderId=${orderId}`;
-
   return newURL;
+}
+
+export function getOrder(orderId) {
+  let matchingOrder;
+  orders.forEach((order) => {
+    if (order.id === orderId) {
+      matchingOrder = new Orders(order);
+    }
+  });
+
+  return matchingOrder;
 }

@@ -1,5 +1,5 @@
 import { orders } from "../data/orders.js";
-import { products, getProduct, loadProductsFetch } from "../data/products.js";
+import { getProduct, loadProductsFetch } from "../data/products.js";
 import { addToCart } from "../data/cart.js";
 import { getOrderUrl } from "../data/orders.js";
 

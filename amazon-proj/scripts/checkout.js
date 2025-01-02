@@ -20,34 +20,3 @@ async function loadPage() {
   renderPaymentSummary();
 }
 loadPage();
-
-/*
-Promise.all([
-  loadProductsFetch(), 
-  new Promise((resolve) => {
-    loadCart(() => {
-      resolve();
-    });
-  })
-
-]).then(() => {
-  renderOrderSummary();
-  renderPaymentSummary();
-});
-
-/*
-new Promise((resolve) => {
-  loadProducts(() => {
-    resolve(); 
-  });
-}).then((value) => {
-  return new Promise((resolve) => {
-    loadCart(() => {
-      resolve();
-    });
-  })
-}).then(() => {
-  renderOrderSummary();
-  renderPaymentSummary();
-});
-*/
