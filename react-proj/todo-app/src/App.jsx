@@ -5,11 +5,21 @@ import { TodoInput } from "./components/TodoInput"
 import { useState, useEffect } from "react"
 
 function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState([
+    { input: "Mingaw nko nmu gerlie 😭", complete: false}
+  ])
   const [selectedTab, setSelectedTab] = useState('Open')
 
   function handleAddTodo(newTodo) {
     const newTodoList = [...todos, {input: newTodo, complete: false}]
+    setTodos(newTodoList)
+    handleSaveData(newTodoList)
+  }
+
+  function handleEditTodo(index, newTodoInput) {
+    let newTodoList = [...todos]
+    let todoToEdit = todos[index]
+    todoToEdit['input'] = newTodoInput
     setTodos(newTodoList)
     handleSaveData(newTodoList)
   }
@@ -53,6 +63,7 @@ function App() {
       />
       <TodoList 
         handleDeleteTodo={handleDeleteTodo} 
+        handleEditTodo={handleEditTodo}
         handleCompleteTodo={handleCompleteTodo}
         selectedTab={selectedTab} 
         todos={todos}
