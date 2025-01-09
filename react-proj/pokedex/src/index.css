@@ -48,18 +48,21 @@ header h1,
 nav {
   padding: 1rem;
   padding-top: 0;
-  overflow-y: auto;
   display: flex;
+  overflow: scroll;
   flex-direction: column;
   gap: 0.25rem;
   height: 100vh;
-  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background: var(--background-primary);
   z-index: 10;
+}
+
+nav::-webkit-scrollbar {
+  display: none;
 }
 
 nav div:first-of-type {
