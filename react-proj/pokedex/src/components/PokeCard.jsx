@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import { getFullPokedexNumber, getPokedexNumber } from "../utils"
 import TypeCard from "./TypeCard"
+import Modal from "./Modal"
 
 export default function PokeCard(props) {
   const { selectedPokemon } = props
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [skill, setSkill] = useState(null)
 
   const { name, height, abilities, stats, types, moves, sprites } = data || {}
 
@@ -14,6 +16,10 @@ export default function PokeCard(props) {
     if (['versions', 'other'].includes(val)) { return false }
     return true
   })
+
+  async function fetchMoveData(move, moveUrl) {
+    if (loadingSkill || !localStorage || !moveUrl) { return }
+  }
 
   useEffect(() => {
 
@@ -62,6 +68,17 @@ export default function PokeCard(props) {
 
   return (
     <div className="poke-card">
+      {skill && (
+        <Modal handleCloseModal={() => { }}>
+          <div>
+            <h6>Name</h6>
+            <h2></h2>
+          </div>
+          <div>
+            <h6>Description</h6>
+            <p>Wowwwww</p>
+          </div>
+        </Modal>)}
       <div>
         <h4>#{getFullPokedexNumber(selectedPokemon)}</h4>
         <h2>{name}</h2>
