@@ -5,12 +5,29 @@ import SideNav from "./components/SideNav"
 
 function App() {
   const [selectedPokemon, setSelectedPokemon] = useState(0)
+  const [showSideMenu, setShowSideMenu] = useState(true)
+
+  function handleToggleMenu() {
+    setShowSideMenu(!showSideMenu)
+  }
+
+  function handleCloseMenu() {
+    setShowSideMenu(true)
+  }
 
   return (
     <>
-      <Header />
-      <SideNav selectedPokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} />
-      <PokeCard selectedPokemon={selectedPokemon} />
+      <Header 
+        handleToggleMenu={handleToggleMenu}
+        showSideMenu={showSideMenu} />
+      <SideNav
+        selectedPokemon={selectedPokemon}
+        setSelectedPokemon={setSelectedPokemon}
+        handleCloseMenu={handleCloseMenu}
+        showSideMenu={showSideMenu} />
+      <PokeCard 
+        selectedPokemon={selectedPokemon}
+        showSideMenu={showSideMenu} />
     </>
   )
 }
